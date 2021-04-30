@@ -1,0 +1,190 @@
+#-----------------------------------------------------------
+# Vivado v2016.1 (64-bit)
+# SW Build 1538259 on Fri Apr  8 15:45:27 MDT 2016
+# IP Build 1537824 on Fri Apr  8 04:28:57 MDT 2016
+# Start of session at: Sat Feb 08 10:34:44 2020
+# Process ID: 10800
+# Current directory: C:/Users/VLSI/Desktop/N150194/LUT4_da
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent1240 C:\Users\VLSI\Desktop\N150194\LUT4_da\LUT4_da.xpr
+# Log file: C:/Users/VLSI/Desktop/N150194/LUT4_da/vivado.log
+# Journal file: C:/Users/VLSI/Desktop/N150194/LUT4_da\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/VLSI/Desktop/N150194/LUT4_da/LUT4_da.xpr
+update_compile_order -fileset sources_1
+open_run impl_1
+report_power -name {power_1}
+report_utilization -name utilization_1
+report_timing_summary -delay_type min_max -report_unconstrained -check_timing_verbose -max_paths 10 -input_pins -name timing_1
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+wait_on_run impl_1
+close_project
+create_project LUT4_obc C:/Users/VLSI/Desktop/N150194/LUT4_obc -part xc7a100tcsg324-1
+file mkdir C:/Users/VLSI/Desktop/N150194/LUT4_obc/LUT4_obc.srcs/sources_1/new
+close [ open C:/Users/VLSI/Desktop/N150194/LUT4_obc/LUT4_obc.srcs/sources_1/new/compiex_multiplier.v w ]
+add_files C:/Users/VLSI/Desktop/N150194/LUT4_obc/LUT4_obc.srcs/sources_1/new/compiex_multiplier.v
+update_compile_order -fileset sources_1
+update_compile_order -fileset sim_1
+update_compile_order -fileset sources_1
+update_compile_order -fileset sim_1
+close [ open C:/Users/VLSI/Desktop/N150194/LUT4_obc/LUT4_obc.srcs/sources_1/new/obc.v w ]
+add_files C:/Users/VLSI/Desktop/N150194/LUT4_obc/LUT4_obc.srcs/sources_1/new/obc.v
+update_compile_order -fileset sources_1
+launch_simulation
+source complex_multiplier.tcl
+add_force {/complex_multiplier/clk} -radix hex {1 0ns} {0 50000ps} -repeat_every 100000ps
+add_force {/complex_multiplier/xre1} -radix hex {c0 0ns}
+add_force {/complex_multiplier/xre2} -radix hex {20 0ns}
+add_force {/complex_multiplier/xre3} -radix hex {40 0ns}
+add_force {/complex_multiplier/xre4} -radix hex {60 0ns}
+add_force {/complex_multiplier/xim1} -radix hex {20 0ns}
+add_force {/complex_multiplier/xim2} -radix hex {40 0ns}
+add_force {/complex_multiplier/xim3} -radix hex {20 0ns}
+add_force {/complex_multiplier/xim4} -radix hex {60 0ns}
+add_force {/complex_multiplier/are1} -radix hex {02800000 0ns}
+add_force {/complex_multiplier/are2} -radix hex {fb800000 0ns}
+add_force {/complex_multiplier/are3} -radix hex {04000000 0ns}
+add_force {/complex_multiplier/are4} -radix hex {04000000 0ns}
+add_force {/complex_multiplier/aim1} -radix hex {08000000 0ns}
+add_force {/complex_multiplier/aim2} -radix hex {02800000 0ns}
+add_force {/complex_multiplier/aim3} -radix hex {01000000 0ns}
+add_force {/complex_multiplier/aim4} -radix hex {fe000000 0ns}
+run all
+create_ip -name vio -vendor xilinx.com -library ip -version 3.0 -module_name vio_0
+set_property -dict [list CONFIG.C_NUM_PROBE_IN {2} CONFIG.C_NUM_PROBE_OUT {16} CONFIG.C_PROBE_IN0_WIDTH {32} CONFIG.C_PROBE_IN1_WIDTH {32} CONFIG.C_PROBE_OUT0_WIDTH {8} CONFIG.C_PROBE_OUT1_WIDTH {8} CONFIG.C_PROBE_OUT2_WIDTH {8} CONFIG.C_PROBE_OUT3_WIDTH {8} CONFIG.C_PROBE_OUT4_WIDTH {8} CONFIG.C_PROBE_OUT5_WIDTH {8} CONFIG.C_PROBE_OUT6_WIDTH {8} CONFIG.C_PROBE_OUT7_WIDTH {8} CONFIG.C_PROBE_OUT8_WIDTH {32} CONFIG.C_PROBE_OUT9_WIDTH {32} CONFIG.C_PROBE_OUT10_WIDTH {32} CONFIG.C_PROBE_OUT11_WIDTH {32} CONFIG.C_PROBE_OUT12_WIDTH {32} CONFIG.C_PROBE_OUT13_WIDTH {32} CONFIG.C_PROBE_OUT14_WIDTH {32} CONFIG.C_PROBE_OUT15_WIDTH {32}] [get_ips vio_0]
+generate_target {instantiation_template} [get_files c:/Users/VLSI/Desktop/N150194/LUT4_obc/LUT4_obc.srcs/sources_1/ip/vio_0/vio_0.xci]
+update_compile_order -fileset sources_1
+generate_target all [get_files  c:/Users/VLSI/Desktop/N150194/LUT4_obc/LUT4_obc.srcs/sources_1/ip/vio_0/vio_0.xci]
+export_ip_user_files -of_objects [get_files c:/Users/VLSI/Desktop/N150194/LUT4_obc/LUT4_obc.srcs/sources_1/ip/vio_0/vio_0.xci] -no_script -force -quiet
+create_ip_run [get_files -of_objects [get_fileset sources_1] c:/Users/VLSI/Desktop/N150194/LUT4_obc/LUT4_obc.srcs/sources_1/ip/vio_0/vio_0.xci]
+launch_run -jobs 2 vio_0_synth_1
+export_simulation -of_objects [get_files c:/Users/VLSI/Desktop/N150194/LUT4_obc/LUT4_obc.srcs/sources_1/ip/vio_0/vio_0.xci] -directory C:/Users/VLSI/Desktop/N150194/LUT4_obc/LUT4_obc.ip_user_files/sim_scripts -ip_user_files_dir C:/Users/VLSI/Desktop/N150194/LUT4_obc/LUT4_obc.ip_user_files -ipstatic_source_dir C:/Users/VLSI/Desktop/N150194/LUT4_obc/LUT4_obc.ip_user_files/ipstatic -force -quiet
+close [ open C:/Users/VLSI/Desktop/N150194/LUT4_obc/LUT4_obc.srcs/sources_1/new/vio_file.v w ]
+add_files C:/Users/VLSI/Desktop/N150194/LUT4_obc/LUT4_obc.srcs/sources_1/new/vio_file.v
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+update_compile_order -fileset sim_1
+update_compile_order -fileset sources_1
+launch_simulation
+source vio_file.tcl
+add_force {/vio_file/clk} -radix hex {1 0ns} {0 50000ps} -repeat_every 100000ps
+add_force {/vio_file/xre1} -radix hex {c0 0ns}
+add_force {/vio_file/xre2} -radix hex {20 0ns}
+add_force {/vio_file/xre3} -radix hex {40 0ns}
+add_force {/vio_file/xre4} -radix hex {60 0ns}
+add_force {/vio_file/xim1} -radix hex {20 0ns}
+add_force {/vio_file/xim2} -radix hex {40 0ns}
+add_force {/vio_file/xim3} -radix hex {20 0ns}
+add_force {/vio_file/xim4} -radix hex {60 0ns}
+add_force {/vio_file/are1} -radix hex {02800000 0ns}
+add_force {/vio_file/are2} -radix hex {fb800000 0ns}
+add_force {/vio_file/are3} -radix hex {04000000 0ns}
+add_force {/vio_file/are4} -radix hex {04000000 0ns}
+add_force {/vio_file/aim1} -radix hex {08000000 0ns}
+add_force {/vio_file/aim2} -radix hex {02800000 0ns}
+add_force {/vio_file/aim3} -radix hex {01000000 0ns}
+add_force {/vio_file/aim4} -radix hex {fe000000 0ns}
+run all
+synth_design -rtl -name rtl_1
+place_ports clk E3
+set_property IOSTANDARD LVCMOS25 [get_ports [list clk]]
+file mkdir C:/Users/VLSI/Desktop/N150194/LUT4_obc/LUT4_obc.srcs/constrs_1/new
+close [ open C:/Users/VLSI/Desktop/N150194/LUT4_obc/LUT4_obc.srcs/constrs_1/new/lut4_obc.xdc w ]
+add_files -fileset constrs_1 C:/Users/VLSI/Desktop/N150194/LUT4_obc/LUT4_obc.srcs/constrs_1/new/lut4_obc.xdc
+set_property target_constrs_file C:/Users/VLSI/Desktop/N150194/LUT4_obc/LUT4_obc.srcs/constrs_1/new/lut4_obc.xdc [current_fileset -constrset]
+save_constraints -force
+launch_runs synth_1 -jobs 2
+wait_on_run synth_1
+open_run synth_1 -name synth_1
+report_power -name {power_1}
+report_utilization -name utilization_1
+report_timing_summary -delay_type min_max -report_unconstrained -check_timing_verbose -max_paths 10 -input_pins -name timing_1
+launch_runs impl_1 -jobs 2
+wait_on_run impl_1
+open_run impl_1
+report_power -name {power_1}
+report_utilization -name utilization_1
+report_timing_summary -delay_type min_max -report_unconstrained -check_timing_verbose -max_paths 10 -input_pins -name timing_1
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+wait_on_run impl_1
+close_design
+close_sim
+close_sim
+close_project
+create_project LUT2_da C:/Users/VLSI/Desktop/N150194/LUT2_da -part xc7a100tcsg324-1
+file mkdir C:/Users/VLSI/Desktop/N150194/LUT2_da/LUT2_da.srcs/sources_1/new
+close [ open C:/Users/VLSI/Desktop/N150194/LUT2_da/LUT2_da.srcs/sources_1/new/vm_2lut.v w ]
+add_files C:/Users/VLSI/Desktop/N150194/LUT2_da/LUT2_da.srcs/sources_1/new/vm_2lut.v
+update_compile_order -fileset sources_1
+update_compile_order -fileset sim_1
+launch_simulation
+source vm_2lut.tcl
+add_force {/vm_2lut/clk} -radix hex {1 0ns} {0 50000ps} -repeat_every 100000ps
+add_force {/vm_2lut/xr1} -radix hex {c0 0ns}
+add_force {/vm_2lut/xr2} -radix hex {20 0ns}
+add_force {/vm_2lut/xr3} -radix hex {40 0ns}
+add_force {/vm_2lut/xr4} -radix hex {60 0ns}
+add_force {/vm_2lut/xi1} -radix hex {20 0ns}
+add_force {/vm_2lut/xi2} -radix hex {40 0ns}
+add_force {/vm_2lut/xi3} -radix hex {20 0ns}
+add_force {/vm_2lut/xi4} -radix hex {60 0ns}
+add_force {/vm_2lut/ar1} -radix hex {02800000 0ns}
+add_force {/vm_2lut/ar2} -radix hex {fb800000 0ns}
+add_force {/vm_2lut/ar3} -radix hex {04000000 0ns}
+add_force {/vm_2lut/ar4} -radix hex {04000000 0ns}
+add_force {/vm_2lut/ai1} -radix hex {08000000 0ns}
+add_force {/vm_2lut/ai2} -radix hex {02800000 0ns}
+add_force {/vm_2lut/ai3} -radix hex {01000000 0ns}
+add_force {/vm_2lut/ai4} -radix hex {fe000000 0ns}
+run all
+create_ip -name vio -vendor xilinx.com -library ip -version 3.0 -module_name vio_0
+set_property -dict [list CONFIG.C_NUM_PROBE_IN {2} CONFIG.C_NUM_PROBE_OUT {16} CONFIG.C_PROBE_IN0_WIDTH {32} CONFIG.C_PROBE_IN1_WIDTH {32} CONFIG.C_PROBE_OUT0_WIDTH {8} CONFIG.C_PROBE_OUT1_WIDTH {8} CONFIG.C_PROBE_OUT2_WIDTH {8} CONFIG.C_PROBE_OUT3_WIDTH {8} CONFIG.C_PROBE_OUT4_WIDTH {8} CONFIG.C_PROBE_OUT5_WIDTH {8} CONFIG.C_PROBE_OUT6_WIDTH {8} CONFIG.C_PROBE_OUT7_WIDTH {8} CONFIG.C_PROBE_OUT8_WIDTH {32} CONFIG.C_PROBE_OUT9_WIDTH {32} CONFIG.C_PROBE_OUT10_WIDTH {32} CONFIG.C_PROBE_OUT11_WIDTH {32} CONFIG.C_PROBE_OUT12_WIDTH {32} CONFIG.C_PROBE_OUT13_WIDTH {32} CONFIG.C_PROBE_OUT14_WIDTH {32} CONFIG.C_PROBE_OUT15_WIDTH {32}] [get_ips vio_0]
+generate_target {instantiation_template} [get_files c:/Users/VLSI/Desktop/N150194/LUT2_da/LUT2_da.srcs/sources_1/ip/vio_0/vio_0.xci]
+update_compile_order -fileset sources_1
+generate_target all [get_files  c:/Users/VLSI/Desktop/N150194/LUT2_da/LUT2_da.srcs/sources_1/ip/vio_0/vio_0.xci]
+export_ip_user_files -of_objects [get_files c:/Users/VLSI/Desktop/N150194/LUT2_da/LUT2_da.srcs/sources_1/ip/vio_0/vio_0.xci] -no_script -force -quiet
+create_ip_run [get_files -of_objects [get_fileset sources_1] c:/Users/VLSI/Desktop/N150194/LUT2_da/LUT2_da.srcs/sources_1/ip/vio_0/vio_0.xci]
+launch_run -jobs 2 vio_0_synth_1
+export_simulation -of_objects [get_files c:/Users/VLSI/Desktop/N150194/LUT2_da/LUT2_da.srcs/sources_1/ip/vio_0/vio_0.xci] -directory C:/Users/VLSI/Desktop/N150194/LUT2_da/LUT2_da.ip_user_files/sim_scripts -ip_user_files_dir C:/Users/VLSI/Desktop/N150194/LUT2_da/LUT2_da.ip_user_files -ipstatic_source_dir C:/Users/VLSI/Desktop/N150194/LUT2_da/LUT2_da.ip_user_files/ipstatic -force -quiet
+close [ open C:/Users/VLSI/Desktop/N150194/LUT2_da/LUT2_da.srcs/sources_1/new/vio_file.v w ]
+add_files C:/Users/VLSI/Desktop/N150194/LUT2_da/LUT2_da.srcs/sources_1/new/vio_file.v
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+update_compile_order -fileset sim_1
+update_compile_order -fileset sources_1
+launch_simulation
+source vio_file.tcl
+add_force {/vio_file/clk} -radix hex {1 0ns} {0 50000ps} -repeat_every 100000ps
+add_force {/vio_file/xr1} -radix hex {c0 0ns}
+add_force {/vio_file/xr2} -radix hex {20 0ns}
+add_force {/vio_file/xr3} -radix hex {40 0ns}
+add_force {/vio_file/xr4} -radix hex {60 0ns}
+add_force {/vio_file/xr4} -radix hex {20 0ns}
+add_force {/vio_file/xi2} -radix hex {40 0ns}
+add_force {/vio_file/xi3} -radix hex {20 0ns}
+add_force {/vio_file/xi4} -radix hex {60 0ns}
+add_force {/vio_file/ar1} -radix hex {02800000 0ns}
+add_force {/vio_file/ar2} -radix hex {fb800000 0ns}
+add_force {/vio_file/ar3} -radix hex {04000000 0ns}
+add_force {/vio_file/ar4} -radix hex {04000000 0ns}
+add_force {/vio_file/ai1} -radix hex {08000000 0ns}
+add_force {/vio_file/ai2} -radix hex {02800000 0ns}
+add_force {/vio_file/ai1} -radix hex {08000000 0ns}
+add_force {/vio_file/ai3} -radix hex {01000000 0ns}
+add_force {/vio_file/ai4} -radix hex {fe000000 0ns}
+run all
+add_force {/vio_file/xi1} -radix hex {20 0ns}
+run all
+add_force {/vio_file/xr4} -radix hex {60 0ns}
+run all
+synth_design -rtl -name rtl_1
+place_ports clk E3
+set_property IOSTANDARD LVCMOS25 [get_ports [list clk]]
+file mkdir C:/Users/VLSI/Desktop/N150194/LUT2_da/LUT2_da.srcs/constrs_1/new
+close [ open C:/Users/VLSI/Desktop/N150194/LUT2_da/LUT2_da.srcs/constrs_1/new/lut2_da.xdc w ]
+add_files -fileset constrs_1 C:/Users/VLSI/Desktop/N150194/LUT2_da/LUT2_da.srcs/constrs_1/new/lut2_da.xdc
+set_property target_constrs_file C:/Users/VLSI/Desktop/N150194/LUT2_da/LUT2_da.srcs/constrs_1/new/lut2_da.xdc [current_fileset -constrset]
+save_constraints -force
+launch_runs synth_1 -jobs 2
+wait_on_run synth_1
+open_run synth_1 -name synth_1
